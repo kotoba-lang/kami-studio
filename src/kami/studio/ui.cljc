@@ -9,7 +9,8 @@
             [css.core :as css]))
 
 (def apps
-  [{:name "Modeler" :kind "Polygon & modifiers" :url "https://kotoba-lang.github.io/kami-app-modeler/"}
+  [{:name "Vehicle Physics" :kind "Shared node / beam document" :url "https://kotoba-lang.github.io/kami-app-modeler/?workspace=vehicle-physics"}
+   {:name "Modeler" :kind "Polygon & modifiers" :url "https://kotoba-lang.github.io/kami-app-modeler/"}
    {:name "Animator" :kind "Timeline & keyframes" :url "https://kotoba-lang.github.io/kami-app-animator/"}
    {:name "BIM Editor" :kind "Building information" :url "https://kotoba-lang.github.io/kami-app-bim-editor/"}
    {:name "CAD" :kind "NURBS & precision" :url "https://kotoba-lang.github.io/kami-app-cad/"}
