@@ -14,7 +14,7 @@
   staleness would not be about the deployed file."
   (:require [clojure.test :refer [deftest is testing]]
             [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [kami.studio.ui :as ui]))
 
 (def ^:private committed (io/file "public" "index.html"))
