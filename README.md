@@ -59,12 +59,31 @@ Styling is hand-written CSS in `ui.cljc` predating the `jp-go-dds` design-system
 rule; new UI in this workspace starts from `jp-go-dds`, so treat this stylesheet
 as legacy rather than as a pattern to copy.
 
-## Known gap
+## Test
 
-No test signal. Nothing asserts that `page` renders, that `public/index.html`
-matches what `build.clj` would write, or that the `kami-app-*` URLs resolve. The
-staleness above is the shape this gap takes: the cheapest check would rebuild
-into a temp file and diff it against the committed `public/index.html`.
+```
+clojure -M:test        # from the repo root
+```
+
+`test/kami/studio/staleness_test.clj` renders `ui/page` and compares it byte for
+byte against the committed `public/index.html` — the check whose absence let
+`5192750` ship a source with seven cards and a deployed page with six. It also
+asserts, separately, that `ui/apps` and the committed page agree on the card
+count and that every app URL appears in the file, so the failure message names
+the regression rather than only reporting a byte difference.
+
+`test/run.clj` reports the **number** of failures and distinguishes three
+outcomes: exit 0 = passed, exit 1 = a real failure, exit 2 = the check refused to
+answer (run from the wrong directory, or no tests ran). Exit 2 is not a pass.
+
+It runs on the JVM deliberately. `deps.edn` pins `kotoba-lang/html` and
+`kotoba-lang/css` by `:git/sha` and `build.clj` renders against those exact shas;
+a runner reaching the sibling west checkouts instead would render against
+different versions than the build does, and its verdict about staleness would not
+be about the deployed file.
+
+Still not covered: nothing fetches the `kami-app-*` URLs, so a card can point at
+a page that 404s and this test stays green.
 
 ## License
 
