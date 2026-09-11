@@ -41,7 +41,7 @@
           (str "public/index.html is STALE: " (count (str on-disk))
                " bytes committed vs " (count rendered)
                " bytes rendered from src/kami/studio/ui.cljk. "
-               "Run `clojure -M build.cljk` and commit the result in the same commit.")))))
+               "Run `kbb -M build.cljk` and commit the result in the same commit.")))))
 
 (deftest every-app-reaches-the-deployed-page
   (testing "each entry in ui/apps has a card and its URL in the committed HTML"

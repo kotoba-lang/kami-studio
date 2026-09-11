@@ -29,7 +29,7 @@ To add or move a card, edit the `apps` vector in `src/kami/studio/ui.cljk` and
 ## Build and deploy — the generated file is the deployed file
 
 ```
-clojure -M build.cljk      # rewrites public/index.html from src/kami/studio/ui.cljk
+kbb -M build.cljk      # rewrites public/index.html from src/kami/studio/ui.cljk
 ```
 
 `.github/workflows/pages.yml` **does not run this build.** It runs
@@ -62,7 +62,7 @@ as legacy rather than as a pattern to copy.
 ## Test
 
 ```
-clojure -M:test        # from the repo root
+kbb -M:test        # from the repo root
 ```
 
 `test/kami/studio/staleness_test.cljk` renders `ui/page` and compares it byte for
