@@ -8,8 +8,8 @@ geometry, or document state; every card on the page is an external link.
 
 | Path | Role |
 |---|---|
-| `src/kami/studio/ui.cljc` | The whole page: the `apps` link table, a `css/css` stylesheet, and `page` returning hiccup |
-| `build.clj` | Two forms — `(spit "public/index.html" (ui/page))` |
+| `src/kami/studio/ui.cljk` | The whole page: the `apps` link table, a `css/css` stylesheet, and `page` returning hiccup |
+| `build.cljk` | Two forms — `(spit "public/index.html" (ui/page))` |
 | `public/index.html` | **Committed generated output.** Do not hand-edit; regenerate from `ui.cljc` |
 | `deps.edn` | `kotoba-lang/html` + `kotoba-lang/css`, pinned by `:git/sha` |
 
@@ -23,13 +23,13 @@ Amenominaka. **Vehicle Physics is not a seventh app** — it is `kami-app-modele
 opened at `?workspace=vehicle-physics`. All seven point at
 `kotoba-lang.github.io/kami-app-*`.
 
-To add or move a card, edit the `apps` vector in `src/kami/studio/ui.cljc` and
+To add or move a card, edit the `apps` vector in `src/kami/studio/ui.cljk` and
 **rebuild** (see below). Nothing else reads that table.
 
 ## Build and deploy — the generated file is the deployed file
 
 ```
-clojure -M build.clj      # rewrites public/index.html from src/kami/studio/ui.cljc
+clojure -M build.cljk      # rewrites public/index.html from src/kami/studio/ui.cljk
 ```
 
 `.github/workflows/pages.yml` **does not run this build.** It runs
@@ -65,19 +65,19 @@ as legacy rather than as a pattern to copy.
 clojure -M:test        # from the repo root
 ```
 
-`test/kami/studio/staleness_test.clj` renders `ui/page` and compares it byte for
+`test/kami/studio/staleness_test.cljk` renders `ui/page` and compares it byte for
 byte against the committed `public/index.html` — the check whose absence let
 `5192750` ship a source with seven cards and a deployed page with six. It also
 asserts, separately, that `ui/apps` and the committed page agree on the card
 count and that every app URL appears in the file, so the failure message names
 the regression rather than only reporting a byte difference.
 
-`test/run.clj` reports the **number** of failures and distinguishes three
+`test/run.cljk` reports the **number** of failures and distinguishes three
 outcomes: exit 0 = passed, exit 1 = a real failure, exit 2 = the check refused to
 answer (run from the wrong directory, or no tests ran). Exit 2 is not a pass.
 
 It runs on the JVM deliberately. `deps.edn` pins `kotoba-lang/html` and
-`kotoba-lang/css` by `:git/sha` and `build.clj` renders against those exact shas;
+`kotoba-lang/css` by `:git/sha` and `build.cljk` renders against those exact shas;
 a runner reaching the sibling west checkouts instead would render against
 different versions than the build does, and its verdict about staleness would not
 be about the deployed file.
