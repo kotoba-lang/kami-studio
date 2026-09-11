@@ -10,4 +10,4 @@
                                    :git/sha "7fc8167c4fb97a92b7c21545e6a92a86cc58a9ca"}}
  :aliases
  {:test {:extra-paths ["test"]
-         :main-opts ["test/run.clj"]}}}
+         :main-opts ["test/run.cljk"]}}}

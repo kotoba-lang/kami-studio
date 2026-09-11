@@ -10,7 +10,7 @@
 
 (when-not (.isFile (io/file "src" "kami" "studio" "ui.cljc"))
   (binding [*out* *err*]
-    (println "REFUSED: run this from the kami-studio repo root (src/kami/studio/ui.cljc not found)"))
+    (println "REFUSED: run this from the kami-studio repo root (src/kami/studio/ui.cljk not found)"))
   (System/exit 2))
 
 (require 'kami.studio.staleness-test)
