@@ -1,4 +1,4 @@
-;; Test entry point: `clojure -M:test` from the repo root.
+;; Test entry point: `kbb -M:test` from the repo root.
 ;;
 ;; Reports the NUMBER of failures, not a boolean — a boolean cannot tell one
 ;; regression apart from a build that never ran (com-junkawasaki/root CLAUDE.md,
