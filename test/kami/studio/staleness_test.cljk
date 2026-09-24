@@ -12,8 +12,8 @@
   A runner that reached the sibling west checkouts instead would render against
   different versions of html/css than the build does, and its verdict about
   staleness would not be about the deployed file."
-  (:require [clojure.test :refer [deftest is testing]]
-            [clojure.java.io :as io]
+  (:require [kotoba.test :refer [deftest is testing]]
+            [kotoba.io :as io]
             [kotoba.lang.text :as str]
             [kami.studio.ui :as ui]))
 
@@ -21,9 +21,9 @@
 
 (deftest committed-output-is-present
   (testing "the file GitHub Pages actually publishes exists and is not empty"
-    (is (.isFile committed)
+    (is (io/file? committed)
         "public/index.html is missing — pages.yml would publish an empty artifact")
-    (is (pos? (.length committed))
+    (is (pos? (io/length committed))
         "public/index.html is zero bytes")))
 
 (deftest rendered-page-is-a-document
@@ -36,7 +36,7 @@
 (deftest committed-output-matches-source
   (testing "public/index.html == what build.cljk would write right now"
     (let [rendered (ui/page)
-          on-disk  (when (.isFile committed) (slurp committed))]
+          on-disk  (when (io/file? committed) (slurp committed))]
       (is (= rendered on-disk)
           (str "public/index.html is STALE: " (count (str on-disk))
                " bytes committed vs " (count rendered)
