@@ -6,9 +6,9 @@
 ;;
 ;; Exit codes: 0 = all assertions passed, 1 = a real failure,
 ;;             2 = the check could not answer (refused; NOT a pass).
-(require '[clojure.test :as t] '[clojure.java.io :as io])
+(require '[kotoba.test :as t] '[kotoba.io :as io])
 
-(when-not (.isFile (io/file "src" "kami" "studio" "ui.cljc"))
+(when-not (io/file? (io/file "src" "kami" "studio" "ui.cljc"))
   (binding [*out* *err*]
     (println "REFUSED: run this from the kami-studio repo root (src/kami/studio/ui.cljk not found)"))
   (System/exit 2))
