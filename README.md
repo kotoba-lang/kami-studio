@@ -50,7 +50,7 @@ enough to know what is deployed.
 
 ## Boundary
 
-Per the kami stack rule (`com-junkawasaki/root` CLAUDE.md, 3D section), the
+Per the kami stack rule (`com-junkawasaki/root` AGENTS.md, 3D section), the
 authority for geometry, scene, animation, and rendering lives in `kami-engine-*`
 and the `webgpu` / `webgl` libraries — never in an app or in this hub. This repo
 owns exactly one thing: which apps exist and how to reach them.
