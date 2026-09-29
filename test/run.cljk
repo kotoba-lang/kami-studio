@@ -1,7 +1,7 @@
 ;; Test entry point: `kbb -M:test` from the repo root.
 ;;
 ;; Reports the NUMBER of failures, not a boolean — a boolean cannot tell one
-;; regression apart from a build that never ran (com-junkawasaki/root CLAUDE.md,
+;; regression apart from a build that never ran (com-junkawasaki/root AGENTS.md,
 ;; "検査を書く前・緑を信じる前の 8 問", question 8).
 ;;
 ;; Exit codes: 0 = all assertions passed, 1 = a real failure,
